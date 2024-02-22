@@ -328,8 +328,8 @@
 (defvar plantuml-output-type
   (if (not (display-images-p))
       "txt"
-    (cond ((image-type-available-p 'svg) "svg")
-          ((image-type-available-p 'png) "png")
+    (cond ((image-type-available-p 'svg) "dsvg")
+          ((image-type-available-p 'png) "dpng")
           (t "txt")))
   "Specify the desired output type to use for generated diagrams.")
 
@@ -338,8 +338,8 @@
   (let* ((completion-ignore-case t)
          (available-types
           (append
-           (and (image-type-available-p 'svg) '("svg"))
-           (and (image-type-available-p 'png) '("png"))
+           (and (image-type-available-p 'svg) '("dsvg"))
+           (and (image-type-available-p 'png) '("dpng"))
            '("txt"))))
     (completing-read (format "Output type [%s]: " plantuml-output-type)
                      available-types
